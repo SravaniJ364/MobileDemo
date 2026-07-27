@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Mobile App</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4CAF50">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Responsive Mobile App</h1>
+
+        <p>This webpage is running inside Android.</p>
+
+        <button onclick="showMessage()">
+            Click Me
+        </button>
+
+        <h2 id="result"></h2>
+
+    </div>
+
+    <script src="script.js"></script>
+<script>
+alert("JavaScript is running");
+
+window.addEventListener("load", async () => {
+    alert("Page loaded");
+
+    if (!("serviceWorker" in navigator)) {
+        alert("Service Workers are NOT supported");
+        return;
+    }
+
+    try {
+        const reg = await navigator.serviceWorker.register("./service-worker.js");
+        alert("SUCCESS");
+        console.log(reg);
+    } catch (e) {
+        alert("FAILED");
+        alert(e.message);
+        console.error(e);
+    }
+});
+</script>
+</body>
+
+</html>
